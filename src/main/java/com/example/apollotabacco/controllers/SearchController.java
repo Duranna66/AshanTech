@@ -1,22 +1,21 @@
 package com.example.apollotabacco.controllers;
 
+import com.example.apollotabacco.dto.ProductDTO;
+import com.example.apollotabacco.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/search")
+import java.util.List;
+
+@RestController
+@RequestMapping("/search/")
 public class SearchController {
-//    @PostMapping("/{id}")
-//    public void getProduct(@RequestParam("id") long id) {
-//
-//
-//    }
-    @GetMapping("/{name}")
-    public void productView(@RequestParam("name") String text) {
-        System.out.println(text);
+    @Autowired
+    private ProductService productService;
+    @GetMapping("name")
+    public List<ProductDTO> productView() {
+        return productService.getAllProducts();
     }
 
 }
