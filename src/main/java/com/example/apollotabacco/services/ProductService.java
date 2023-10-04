@@ -16,12 +16,23 @@ public class ProductService {
         public List<ProductDTO> getAllProducts() {
             return productRepo.findAll().stream().map(x-> new ProductDTO(
                     x.getId(),
-                    x.getPhoto(),
+                    x.getName(),
+
                     x.getPrice(),
                     x.getManufacturer(),
                     x.getDescription(),
                     x.getType(),
                     x.getLikes())).toList();
+        }
+        public List<ProductDTO> getProductsByName(String name) {
+            return productRepo.findByName(name).stream().map(x-> new ProductDTO(
+                    x.getId(),
+                    x.getName(),
 
+                    x.getPrice(),
+                    x.getManufacturer(),
+                    x.getDescription(),
+                    x.getType(),
+                    x.getLikes())).toList();
         }
 }

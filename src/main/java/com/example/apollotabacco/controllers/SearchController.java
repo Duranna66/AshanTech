@@ -13,9 +13,10 @@ import java.util.List;
 public class SearchController {
     @Autowired
     private ProductService productService;
-    @GetMapping("name")
-    public List<ProductDTO> productView() {
-        return productService.getAllProducts();
+    @GetMapping("{name}")
+    public List<ProductDTO> productView(@PathVariable String name) {
+        return productService.getProductsByName(name);
     }
+
 
 }

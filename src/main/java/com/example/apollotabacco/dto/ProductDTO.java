@@ -4,7 +4,8 @@ import javax.swing.*;
 
 public record ProductDTO (
          Long id,
-         ImageIcon photo,
+         String name,
+//         ImageIcon photo,
          int price,
          String manufacturer,
          String  description,
