@@ -1,6 +1,8 @@
 package com.example.apollotabacco.dto;
 
+
 import javax.swing.*;
+import java.util.List;
 
 public record ProductDTO (
          Long id,
@@ -9,7 +11,7 @@ public record ProductDTO (
          int price,
          String manufacturer,
          String  description,
-         String type,
-         long likes
+         String type
+//         List<Like> likes
 ){
 }

@@ -21,8 +21,8 @@ public class ProductService {
                     x.getPrice(),
                     x.getManufacturer(),
                     x.getDescription(),
-                    x.getType(),
-                    x.getLikes())).toList();
+                    x.getType()
+                  )).toList();
         }
         public List<ProductDTO> getProductsByName(String name) {
             return productRepo.findByName(name).stream().map(x-> new ProductDTO(
@@ -32,7 +32,7 @@ public class ProductService {
                     x.getPrice(),
                     x.getManufacturer(),
                     x.getDescription(),
-                    x.getType(),
-                    x.getLikes())).toList();
+                    x.getType()
+                   )).toList();
         }
 }
