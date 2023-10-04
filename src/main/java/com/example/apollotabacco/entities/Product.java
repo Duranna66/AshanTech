@@ -13,7 +13,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private ImageIcon photo;
+    private String name;
+//    private ImageIcon photo;
     private int price;
     private String manufacturer;
     private String  description;
@@ -21,9 +22,9 @@ public class Product {
     private long likes;
 //    private List<String> tags;
 
-    public Product(Long id, ImageIcon photo, int price, String manufacturer, String description, String type, long likes) {
+    public Product(Long id, String name, int price, String manufacturer, String description, String type, long likes) {
         this.id = id;
-        this.photo = photo;
+//        this.photo = photo;
         this.price = price;
         this.manufacturer = manufacturer;
         this.description = description;
@@ -43,13 +44,13 @@ public class Product {
         this.id = id;
     }
 
-    public ImageIcon getPhoto() {
-        return photo;
-    }
+//    public ImageIcon getPhoto() {
+//        return photo;
+//    }
 
-    public void setPhoto(ImageIcon photo) {
-        this.photo = photo;
-    }
+//    public void setPhoto(ImageIcon photo) {
+//        this.photo = photo;
+//    }
 
     public int getPrice() {
         return price;
@@ -89,5 +90,13 @@ public class Product {
 
     public void setLikes(long likes) {
         this.likes = likes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
