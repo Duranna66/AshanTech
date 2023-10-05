@@ -1,4 +1,4 @@
-create table if not exist Likes(
+create table if not exists likes(
     id integer primary key generated always as IDENTITY,
-    id_product int REFERENCES products(id)
+    id_product int REFERENCES product(id)
 )

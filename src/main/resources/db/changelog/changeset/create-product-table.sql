@@ -1,4 +1,4 @@
-create table if not exist Products
+create table if not exists product
 (
     id           integer primary key generated always as IDENTITY,
     name         varchar(100)     not null,
