@@ -19,6 +19,5 @@ public record ProductDTO (
          String type,
          List<Like> likes,
          List<Tag> tags
-
 ){
 }

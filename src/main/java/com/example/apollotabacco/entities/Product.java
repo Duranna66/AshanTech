@@ -26,5 +26,7 @@ public class Product {
     private List<Like> likes;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Tag> tags;
+//    @ManyToMany
+//    private List<Bucket> buckets;
 
 }

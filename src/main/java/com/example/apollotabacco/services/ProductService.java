@@ -23,6 +23,7 @@ public class ProductService {
                     x.getType(),
                     x.getLikes(),
                     x.getTags()
+
                   )).toList();
         }
         public List<ProductDTO> getProductsByName(String name) {
