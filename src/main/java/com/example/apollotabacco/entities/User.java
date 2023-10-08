@@ -10,17 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String Name;
+    @Enumerated()
     private UserRoles role;
     @Email(message = "wrong email")
     private String email;
     private String password;
     private String phoneNumber;
-//    @OneToOne(mappedBy = "user")
-//    private Bucket bucket;
+    @OneToOne(mappedBy = "user")
+    private Bucket bucket;
 }

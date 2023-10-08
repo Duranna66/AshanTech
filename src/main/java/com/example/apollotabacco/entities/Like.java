@@ -14,6 +14,6 @@ public class Like {
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(name="id_product",referencedColumnName="id",nullable=false,unique=true)
+    @JoinColumn(name="id_product",referencedColumnName="id")
     private Product product;
 }

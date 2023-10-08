@@ -15,6 +15,6 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    @JoinColumn(name="id_product",referencedColumnName="id",nullable=false,unique=true)
+    @JoinColumn(name="id_product",referencedColumnName="id")
     private Product product;
 }
