@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class GridProductController {
     @Autowired
     private ProductRepo productRepo;
+    @GetMapping("")
+    public String hello() {
+        return "hello";
+    }
     @PostMapping("")
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
         try {
