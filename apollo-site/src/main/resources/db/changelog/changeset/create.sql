@@ -1,1 +1,1 @@
-create TABLE Test(id int, name varchar(255))
+create Table test(id int,  name varchar(255))

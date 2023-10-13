@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -15,9 +18,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String Name;
-    @Enumerated()
-    private UserRoles role;
+    private String name;
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<UserRole> roles;
     @Email(message = "wrong email")
     private String email;
     private String password;
