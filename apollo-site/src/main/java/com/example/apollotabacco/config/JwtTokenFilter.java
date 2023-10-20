@@ -7,7 +7,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,11 +30,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         String header = request.getHeader("Authorization");
         String name = null;
         String jwt = null;
-        if(header != null && header.startsWith("Bearer ")) {
+        log.info(header);
+        if(header != null && header.startsWith("Bearer ")) { //rather mistake is here
             jwt = header.substring(7);
         }
         try{
@@ -48,8 +51,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                     name,
                     null,
-                    jwtTokenUtils.getUserRole(jwt).stream().map(SimpleGrantedAuthority::new).toList()
+                    jwtTokenUtils.getUserRoles(jwt).stream().map(SimpleGrantedAuthority::new).toList()
             );
+            SecurityContextHolder.getContext().setAuthentication(token);
             filterChain.doFilter(request, response);
         }
     }

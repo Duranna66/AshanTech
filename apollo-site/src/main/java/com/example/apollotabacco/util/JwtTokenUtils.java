@@ -9,7 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class JwtTokenUtils {
@@ -19,7 +22,7 @@ public class JwtTokenUtils {
     private Duration time;
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> map = new HashMap<>();
-        List<String> roleList =userDetails.getAuthorities()
+        List<String> roleList = userDetails.getAuthorities()
                 .stream().map(GrantedAuthority::getAuthority).toList();
         map.put("roles", roleList);
         Date now = new Date();
@@ -35,9 +38,11 @@ public class JwtTokenUtils {
     public String getUserName(String token) {
         return getAllClaims(token).getSubject();
     }
-    public List<String> getUserRole(String token) {
+
+    public List<String> getUserRoles(String token) {
         return getAllClaims(token).get("roles", List.class);
     }
+
     public Claims getAllClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(secret)

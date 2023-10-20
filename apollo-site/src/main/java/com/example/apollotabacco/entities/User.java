@@ -31,4 +31,9 @@ public class User {
     private String phoneNumber;
     @OneToOne(mappedBy = "user")
     private Bucket bucket;
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 }
