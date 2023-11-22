@@ -1,21 +1,35 @@
 package com.example.apollotabacco.controllers;
 
-import com.example.apollotabacco.dto.ProductDTO;
-import com.example.apollotabacco.services.ProductService;
+
+import com.example.apollotabacco.entities.Bucket;
+import com.example.apollotabacco.entities.Product;
+import com.example.apollotabacco.entities.User;
+import com.example.apollotabacco.services.UserService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/search/")
+@CrossOrigin("http://localhost:3000/")
 public class SearchController {
     @Autowired
-    private ProductService productService;
-    @GetMapping("{name}")
-    public List<ProductDTO> productView(@PathVariable String name) {
-        return productService.getProductsByName(name);
+    private UserService userService;
+
+    @GetMapping("all")
+    public List<User> allProducts() {
+        return userService.getAll();
+    }
+    @PatchMapping("test")
+    public String test(@RequestBody List<User> users) {
+
+//        users.stream().filter(x -> x.getIsDeleted().equals("false")).forEach(x -> System.out.println(x.getName()));
+        userService.save(users);
+        return "Succ";
     }
 
 
