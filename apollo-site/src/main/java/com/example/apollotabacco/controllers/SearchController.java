@@ -30,9 +30,16 @@ public class SearchController {
         return "Success";
     }
     @PatchMapping("deleteFromPrison")
-    public String delete(@RequestBody User user) {
+    public String deleteFromPrison(@RequestBody User user) {
         System.out.println(user);
         user.setIsDeleted("true");
+        userService.save(user);
+        return "redirect:/";
+    }
+    @PatchMapping("deleteFromList")
+    public String deleteFromList(@RequestBody User user) {
+        System.out.println(user);
+        user.setIsDeleted("q");
         userService.save(user);
         return "redirect:/";
     }
