@@ -28,8 +28,7 @@ public class UserService  {
         try {
             session.beginTransaction();
             User user1 = session.get(User.class, user.getId());
-            user1.setName(user.getName());
-            user1.setPhoneNumber(user.getPhoneNumber());
+            user1.setIsDeleted("false");
             session.getTransaction().commit();
         } finally {
             session.close();
@@ -41,9 +40,13 @@ public class UserService  {
         return userRepo.getAllBy();
     }
 
-    public List<User> save(List<User> users) {
+    public List<User> saveList(List<User> users) {
         userRepo.saveAll(users);
         return users;
+    }
+    public User save(User user) {
+        userRepo.save(user);
+        return user;
     }
 
 }

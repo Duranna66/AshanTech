@@ -24,12 +24,17 @@ public class SearchController {
     public List<User> allProducts() {
         return userService.getAll();
     }
-    @PatchMapping("test")
-    public String test(@RequestBody List<User> users) {
-
-//        users.stream().filter(x -> x.getIsDeleted().equals("false")).forEach(x -> System.out.println(x.getName()));
-        userService.save(users);
-        return "Succ";
+    @PatchMapping("update")
+    public String update(@RequestBody List<User> users) {
+        userService.saveList(users);
+        return "Success";
+    }
+    @PatchMapping("deleteFromPrison")
+    public String delete(@RequestBody User user) {
+        System.out.println(user);
+        user.setIsDeleted("true");
+        userService.save(user);
+        return "redirect:/";
     }
 
 
