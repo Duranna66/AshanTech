@@ -4,6 +4,7 @@ package com.example.apollotabacco.controllers;
 import com.example.apollotabacco.entities.Bucket;
 import com.example.apollotabacco.entities.Product;
 import com.example.apollotabacco.entities.User;
+import com.example.apollotabacco.services.BucketService;
 import com.example.apollotabacco.services.UserService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +18,9 @@ import java.util.List;
 @RequestMapping("/search/")
 @CrossOrigin("http://localhost:3000/")
 public class SearchController {
+    @Autowired
+    private BucketService bucketService;
+
     @Autowired
     private UserService userService;
 
@@ -43,6 +47,18 @@ public class SearchController {
         userService.save(user);
         return "redirect:/";
     }
+    @GetMapping("size")
+    public Bucket getSize() {
+        return bucketService.getSize(1L);
+    }
+    @PatchMapping("sizeUpdate")
+    public String updateSize(@RequestBody int size) {
+        Bucket bucket = bucketService.getSize(1L);
+        bucket.setSize(size);
+        bucketService.save(bucket);
+        return "Success";
+    }
+
 
 
 }

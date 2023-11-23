@@ -31,8 +31,6 @@ public class User {
     private String password;
     @Column(name = "phone_number")
     private Integer phoneNumber;
-    @OneToOne(mappedBy = "user")
-    private Bucket bucket;
 
     public User(String name, String password) {
         this.name = name;

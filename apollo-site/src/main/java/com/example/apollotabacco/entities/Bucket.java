@@ -16,8 +16,7 @@ public class Bucket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne()
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+
+    private int size;
 
 }
