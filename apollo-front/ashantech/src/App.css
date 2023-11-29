@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root {
+  display: flex;
+  justify-content: center;
+}
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.List-item {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.item {
+  /*margin-left: 500px;*/
+  min-width: 450px;
+  min-height: 470px;
+  /*border: 5px solid lightblue;*/
+  padding: 20px 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column; /* располагает элементы вертикально */
+  align-items: center; /* выравнивает элементы по центру по горизонтали */
+  justify-content: start; /* распределяет пространство вокруг элементов */
+  overflow: scroll;
+}
+.itemM {
+  /*margin-left: 500px;*/
+  min-width: 450px;
+  min-height: 470px;
+  /*border: 5px solid lightblue;*/
+  padding: 20px 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column; /* располагает элементы вертикально */
+  align-items: center; /* выравнивает элементы по центру по горизонтали */
+  justify-content: start; /* распределяет пространство вокруг элементов */
+}
+.items {
+  width: 100%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  color: white;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: plum;
+  display: inline-block;
+}
+.itemsT {
+  width: 100%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: deepskyblue;
+  display: inline-block;
+}
+.itemsP {
+  width: 100%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: hotpink;
+  display: inline-block;
+}
+.row{
+  width: 150%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: white;
+}
+.q{
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 2px solid lightpink;
+}
+.k{
+  width: 130px;
+  height: 130px;
+  background: white;
+  border: 2px solid lightpink;
+}
+
+.table {
+  margin-left: 10px;
+  width: 500%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: grab;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.empty {
+  cursor: grab;
+  border: 30px solid white;
+}
+.button {
+  background-color: lightpink;
+
+}
+. bott {
+  margin-top: 100px;
+}
+.item1 {
+  /*margin-left: 200px;*/
+  min-width: 450px;
+  min-height: 600px;
+  border: 5px solid lightblue;
+  padding: 20px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+
+}
+
+input[type="text"]:focus {
+  border-color: #4CAF50;
+}
+.addButt {
+}
+.modal_content {
+  height: 500px;
+  width: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  color: plum;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+.title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+.modal_background {
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(200,200,200);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal_content.active {
+  transform: scale(1);
+}
+.addButton {
+  background-color: #f0f0f;
+  color: #3a7999;
+  border: 3px solid #3a7999;
+  padding: 10px 35px;
+  overflow: hidden;
+}
+
+.addButton:active {
+  background-color: #3a7999;
+  color: #f0f0f;
+  border: 3px dotted #3a7999;
+}
+.highlight {
+  background-color: yellow;
+}
+
+/* Display only. Not needed! */
+
+@import 'https://raw.githubusercontent.com/jonathantneal/system-font-css/gh-pages/system-font.css';
+
+body {
+  background: dodgerblue linear-gradient(22deg, aqua, dodgerblue, deeppink) fixed;
+  color: white;
+  font: normal 12px/1.6 system-ui, sans-serif;
+  text-shadow: 0 1px 1px hsl(0 0% 0% / 20%);
+  margin: 3rem;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus,
+a:hover {
+  text-decoration-color: black;
+}
+
+.myInput {
+  width: 185px;
+  font-size: 13px;
+  padding: 6px 0 4px 10px;
+  border: 1px solid plum;
+  background: #F6F6f6;
+  border-radius: 8px;
+}
+
+
+

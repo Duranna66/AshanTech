@@ -1,0 +1,8 @@
+.viewport {
+  width: 150px;
+  overflow-y: auto;
+  padding-left: 800px; /* Сдвигаем элемент вправо на 50 пикселей */
+}
+.item {
+  height: 30px;
+}

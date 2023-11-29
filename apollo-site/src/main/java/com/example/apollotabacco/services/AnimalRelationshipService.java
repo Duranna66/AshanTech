@@ -1,13 +1,12 @@
 package com.example.apollotabacco.services;
 
+import com.example.apollotabacco.entities.Animal;
 import com.example.apollotabacco.entities.AnimalPair;
 import com.example.apollotabacco.entities.AnimalRelationship;
-import com.example.apollotabacco.entities.User;
 import com.example.apollotabacco.repositories.AnimalRelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class AnimalRelationshipService {
     @Autowired
     private AnimalRelRepo animalRelRepo;
     @Autowired
-    private UserService userService;
+    private AnimalService animalService;
     public AnimalRelationship save(List <AnimalRelationship> relationship) {
         relationship.forEach(x -> {
             AnimalRelationship animalRelationship = animalRelRepo.findByAnimalId1AndAnimalId2(x.getAnimalId1(), x.getAnimalId2());
@@ -65,17 +64,17 @@ public class AnimalRelationshipService {
         int i = 1;
         for (Long animal : bestPartners.keySet()) {
             Long partner = bestPartners.get(animal);
-            User user1 = userService.findById(animal);
-            User user2 = userService.findById(partner);
-            user1.setPhoneNumber(i);
-            user2.setPhoneNumber(i);
+            Animal animal1 = animalService.findById(animal);
+            Animal animal2 = animalService.findById(partner);
+            animal1.setPrisonId(i);
+            animal2.setPrisonId(i);
             i++;
-            System.out.println(user1);
-            System.out.println(user2);
-            user1.setIsDeleted("false");
-            user2.setIsDeleted("false");
-            userService.save(user1);
-            userService.save(user2);
+            System.out.println(animal1);
+            System.out.println(animal2);
+            animal1.setIsDeleted("false");
+            animal2.setIsDeleted("false");
+            animalService.save(animal1);
+            animalService.save(animal2);
         }
 
     }
