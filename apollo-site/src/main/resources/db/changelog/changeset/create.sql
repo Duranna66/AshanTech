@@ -1,5 +1,6 @@
 create TABLE if not exists users(id int generated always as  IDENTITY
                                 , isDeleted varchar(255)
+                                , isPredator varchar(255)
                                 , email varchar(255)
                                 , name varchar(255)
                                 , password varchar(255)

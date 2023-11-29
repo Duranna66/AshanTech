@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -39,6 +40,7 @@ public class UserService  {
     public List<User> getAll() {
         return userRepo.getAllBy();
     }
+    @Transactional
 
     public List<User> saveList(List<User> users) {
         userRepo.saveAll(users);
@@ -47,6 +49,9 @@ public class UserService  {
     public User save(User user) {
         userRepo.save(user);
         return user;
+    }
+    public User findById(Long id) {
+        return userRepo.findById(id).get();
     }
 
 }

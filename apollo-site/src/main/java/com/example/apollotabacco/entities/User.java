@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -31,6 +31,8 @@ public class User {
     private String password;
     @Column(name = "phone_number")
     private Integer phoneNumber;
+
+    private String isPredator;
 
     public User(String name, String password) {
         this.name = name;
