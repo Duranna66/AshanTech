@@ -50,8 +50,6 @@ public class AnimalRelationshipService {
         for (AnimalRelationship connection : list) {
             Long animal1 = connection.getAnimalId1();
             Long animal2 = connection.getAnimalId2();
-            System.out.println(animal1 + " " + animal2);
-            System.out.println(bestPartners.containsKey(animal1) && bestPartners.containsValue(animal1) && bestPartners.containsKey(animal2) && bestPartners.containsValue(animal2));
             if (bestPartners.containsKey(animal1) && bestPartners.get(animal1).equals(animal2) &&
                     bestPartners.containsKey(animal2) && bestPartners.get(animal2).equals(animal1)) {
                 continue;
@@ -69,10 +67,6 @@ public class AnimalRelationshipService {
             animal1.setPrisonId(i);
             animal2.setPrisonId(i);
             i++;
-            System.out.println(animal1);
-            System.out.println(animal2);
-            animal1.setIsDeleted("false");
-            animal2.setIsDeleted("false");
             animalService.save(animal1);
             animalService.save(animal2);
         }

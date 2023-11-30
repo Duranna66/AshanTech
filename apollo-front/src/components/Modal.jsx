@@ -5,31 +5,28 @@ function Modal({ active, setActive, setAppState, appState }) {
     const [isPredator, setIsPredator] = useState(null)
     const [inputValue, setInputValue] = useState('');
     const handleClick = () => {
-
-        // for(let i = 0; i < appState.size; i++) {
-        //     console.log(appState[i], inputValue)
-        //     if(appState[i] === inputValue) {
-        //         alert("Сделай уникальное пж")
-        //         return
-        //     }
-        // }
-
-            let value = {name: inputValue, prisonId:-1, isPredator:isPredator, isDeleted:'true'}
-            fetch('http://localhost:8080/search/addAnimal', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(value)
+        let value = { name: inputValue, prisonId: -1, isPredator: isPredator, isDeleted: 'true' };
+        fetch('http://localhost:8080/search/addAnimal', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    alert("братан, сказал же уникальный :(")
+                    throw new Error(response.statusText);
+                }
+                return response.json();
             })
-                .then(response => response.json())
-                .then(data => {
-                    setAppState([...appState], data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        setActive(false)
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+            setActive(false);
         window.location.reload(false);
     };
     const handleButtonClick = (buttonIndex) => {
@@ -47,20 +44,20 @@ function Modal({ active, setActive, setAppState, appState }) {
     return (
         <div className={"modal_background"}>
             <div className={"modal_content"}>
-                <button onClick={() => setActive(false)}>X</button>
+                <button className={"glow-on-hover"} onClick={() => setActive(false)}>X</button>
                 <div className={"title"}>
                     <h1>Введите данные животного</h1>
                     <div className={"body"}></div>
                     <p>
                         Введите имя(уникальное)
                         <br></br>
-                        <input onChange={(e) => inputChangeHandler(e)}/>
+                        <input className={"myInput"} onChange={(e) => inputChangeHandler(e)}/>
                     </p>
                     <p>
                         Хищник?
                         <br></br>
                         <button
-                            className={highlightedButton === 1 ? "highlight" : ""}
+                            className={highlightedButton === 1 ? "highlight" : "not_highlight"}
                             onClick={() => {handleButtonClick(1)
                                 setIsPredator(true)
                             }}
@@ -68,7 +65,7 @@ function Modal({ active, setActive, setAppState, appState }) {
                             yes
                         </button>
                         <button
-                            className={highlightedButton === 2 ? "highlight" : ""}
+                            className={highlightedButton === 2 ? "highlight" : "not_highlight"}
                             onClick={() => {handleButtonClick(2)
                             setIsPredator(false)}}
                         >
@@ -76,7 +73,7 @@ function Modal({ active, setActive, setAppState, appState }) {
                         </button>
                     </p>
                 </div>
-                <button onClick={handleClick}>Добавить</button>
+                <button className={"addButton"} onClick={handleClick}>Добавить</button>
             </div>
         </div>
     );

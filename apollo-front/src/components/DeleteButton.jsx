@@ -23,8 +23,8 @@ function DeleteButton({appState}) {
 
     };
     return (
-        <button className={"button"} onClick={handleClick}>
-            X
+        <button className={"deleteButton"} onClick={handleClick}>
+            x
         </button>
     );
 }

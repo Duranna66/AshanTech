@@ -8,6 +8,8 @@ import com.example.apollotabacco.services.AnimalRelationshipService;
 import com.example.apollotabacco.services.SizeService;
 import com.example.apollotabacco.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,10 +72,18 @@ public class SearchController {
     }
 
     @PostMapping("addAnimal")
-    public String addAnimal(@RequestBody Animal animal) {
-        animal.setId(-1L);
+    public ResponseEntity<String> addAnimal(@RequestBody Animal animal) {
+        Animal animal1 = animalService.findByName(animal.getName());
+        if(animal1 != null) {
+            if(animal1.getIsDeleted().equals("q")) {
+                animal1.setIsDeleted("true");
+                 animalService.save(animal1);
+                 return ResponseEntity.ok("success");
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("not unique");
+        }
         animalService.save(animal);
-        return "Success";
+        return ResponseEntity.ok("success");
     }
     @PatchMapping("count")
     public String countAnimal(@RequestBody List<AnimalRelationship> relationship) {

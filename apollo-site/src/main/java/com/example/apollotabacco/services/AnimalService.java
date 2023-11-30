@@ -48,5 +48,7 @@ public class AnimalService {
     public Animal findById(Long id) {
         return animalRepo.findById(id).get();
     }
-
+    public Animal findByName(String name) {
+        return animalRepo.findByName(name);
+    }
 }

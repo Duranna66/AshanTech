@@ -24,7 +24,7 @@ function DeletePrisonButton({appState}) {
         console.log(animal)
     };
     return (
-        <button className={"button"} onClick={handleClick} >X</button>
+        <button className={"deleteButton"} onClick={handleClick} >X</button>
     );
 }
 

@@ -17,6 +17,7 @@ function SaveButton({appState, matrix}) {
                 setData(data);
             })
             .catch(error => {
+                console.log(error + "xuy")
             });
         matrix.map(x =>
             x.map(y =>
